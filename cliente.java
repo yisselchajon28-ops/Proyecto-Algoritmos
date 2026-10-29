@@ -1,12 +1,10 @@
 public class cliente {
-    // Atributos
     private String dpi;
     private String nombre;
     private String direccion;
     private String fechaNacimiento;
-    private String tipo; // Normal o VIP
+    private String tipo;
 
-    // Constructor
     public cliente(String dpi, String nombre, String direccion, String fechaNacimiento, String tipo) {
         this.dpi = dpi;
         this.nombre = nombre;
@@ -14,8 +12,6 @@ public class cliente {
         this.fechaNacimiento = fechaNacimiento;
         this.tipo = tipo;
     }
-
-    // Getter y Setter
 
     public String getDpi() {
         return dpi;

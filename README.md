@@ -1,17 +1,27 @@
-# Sistema de Gestion - Algoritmos y POO
+# Sistema de ventas
 
-## 1. Descripcion del Proyecto
-Proyecto academico desarrollado en colaboracion aplicando Programacion Orientada a Objetos en Java y gestion colaborativa con Git y GitHub[cite: 1].
+Proyecto sencillo de Java que usa clases, listas, `if`, `switch` y archivos de
+texto. Se maneja desde la terminal.
 
-## 2. Integrantes del Equipo
-- Justin Misael Salas Pirir
-- Yissel Chajon
+## Ejecutar
 
-## 3. Alcance Actual (Parte 1 y Parte 2)
-- Producto: codigo, nombre, descripcion, marca, precio.
-- Cliente: DPI, nombre, direccion, fecha nacimiento, tipo (regular/VIP).
+Abra una terminal en esta carpeta:
 
-## 4. Requisitos Tecnicos
-- Lenguaje: Java
-- Paradigma: Programacion Orientada a Objetos
-- Control de versiones: Git y GitHub[cite: 1]
+```bash
+javac *.java
+java main
+```
+
+El programa guarda y carga los registros en el archivo `datos.txt`. No escriba
+el símbolo `|` en los datos.
+
+## Opciones
+
+El menú permite registrar productos, clientes, empleados, bodegas e inventario;
+registrar ventas; consultar existencias; y cancelar órdenes.
+
+Una orden registra un producto. Para vender otro producto, registre otra orden.
+
+## Diagrama
+
+El diagrama sencillo de las clases está en [docs/diagrama-uml.puml](docs/diagrama-uml.puml).

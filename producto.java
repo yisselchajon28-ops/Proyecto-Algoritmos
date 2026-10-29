@@ -1,12 +1,9 @@
 public class producto {
-    // atributos
     private String codigo;
     private String nombre;
     private String descripcion;
     private String marca;
     private double precio;
-
-    // constructor
 
     public producto(String codigo, String nombre, String descripcion, String marca, double precio) {
         this.codigo = codigo;
@@ -15,8 +12,6 @@ public class producto {
         this.marca = marca;
         this.precio = precio;
     }
-        
-        //getter y setter
 
     public String getCodigo() {
         return codigo;
