@@ -6,7 +6,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class main {
+
+public class Main {
     static Scanner teclado = new Scanner(System.in);
     static ArrayList<producto> productos = new ArrayList<>();
     static ArrayList<cliente> clientes = new ArrayList<>();
@@ -26,7 +27,7 @@ public class main {
             System.out.println("3. Registrar empleado");
             System.out.println("4. Registrar bodega");
             System.out.println("5. Agregar productos a bodega");
-            System.out.println("6. Registrar venta");
+            System.out.println("6. Registrar Orden de Compra");
             System.out.println("7. Ver inventario");
             System.out.println("8. Ver o cancelar órdenes");
             System.out.println("9. Salir");
@@ -67,10 +68,10 @@ public class main {
     }
 
     static void registrarProducto() {
-        System.out.println("\n--- Nuevo producto ---");
+        System.out.println("\n--- Nuevo producto a registrar ---");
         String codigo = leerTexto("Código: ");
         if (buscarProducto(codigo) != null) {
-            System.out.println("Ese código ya existe.");
+            System.out.println("Ese código ya existe. Intente con otro.");
             return;
         }
         String nombre = leerTexto("Nombre: ");
@@ -86,7 +87,7 @@ public class main {
     }
 
     static void registrarCliente() {
-        System.out.println("\n--- Nuevo cliente ---");
+        System.out.println("\n--- Registrar Nuevo cliente ---");
         String dpi = leerTexto("DPI: ");
         if (buscarCliente(dpi) != null) {
             System.out.println("Ese DPI ya existe.");
@@ -428,29 +429,30 @@ public class main {
     static void guardarDatos() {
         try (PrintWriter archivo = new PrintWriter(new FileWriter("datos.txt"))) {
             for (producto item : productos) {
-                archivo.println("P|" + item.getCodigo() + "|" + item.getNombre() + "|"
-                        + item.getDescripcion() + "|" + item.getMarca() + "|" + item.getPrecio());
+                archivo.println("PRODUCTOS | Código: " + item.getCodigo() + "| Nombre: " + item.getNombre() + "| Descripción: "
+                        + item.getDescripcion() + "| Marca: " + item.getMarca() + "| Precio: " + item.getPrecio());
             }
             for (cliente item : clientes) {
-                archivo.println("C|" + item.getDpi() + "|" + item.getNombre() + "|"
-                        + item.getDireccion() + "|" + item.getFechaNacimiento() + "|" + item.getTipo());
+        
+                archivo.println("CLIENTES | DPI: " + item.getDpi() + "| Nombre: " + item.getNombre() + "| Dirección: "
+                        + item.getDireccion() + "| Fecha de Nacimiento: " + item.getFechaNacimiento() + "| Tipo: " + item.getTipo());
             }
             for (Empleado item : empleados) {
-                archivo.println("E|" + item.getId() + "|" + item.getNombre() + "|" + item.getDpi()
-                        + "|" + item.getDireccion() + "|" + item.getPuesto() + "|" + item.getSalario());
+                archivo.println("EMPLEADOS | ID: " + item.getId() + "| Nombre: " + item.getNombre() + "| DPI: " + item.getDpi()
+                        + "| Dirección: " + item.getDireccion() + "| Puesto: " + item.getPuesto() + "| Salario: " + item.getSalario());
             }
             for (Bodega item : bodegas) {
-                archivo.println("B|" + item.getId() + "|" + item.getIdEmpleado() + "|"
-                        + item.getCapacidad() + "|" + item.getDireccion());
+                archivo.println("BODEGAS | ID: " + item.getId() + "| ID Empleado: " + item.getIdEmpleado() + "| Capacidad: "
+                        + item.getCapacidad() + "| Dirección: " + item.getDireccion());
             }
             for (Inventario item : inventarios) {
-                archivo.println("I|" + item.getIdBodega() + "|" + item.getCodigoProducto()
+                archivo.println("INVENTARIO | ID Bodega: " + item.getIdBodega() + "| Código Producto: " + item.getCodigoProducto()
                         + "|" + item.getCantidad());
             }
             for (OrdenCompra item : ordenes) {
-                archivo.println("O|" + item.getId() + "|" + item.getDpiCliente() + "|"
-                        + item.getCodigoProducto() + "|" + item.getCantidad() + "|" + item.getFecha()
-                        + "|" + item.getTotal() + "|" + item.getEstado() + "|" + item.getIdBodega());
+                archivo.println("ORDENES | ID: " + item.getId() + "| DPI Cliente: " + item.getDpiCliente() + "| Código Producto: "
+                        + item.getCodigoProducto() + "| Cantidad: " + item.getCantidad() + "| Fecha: " + item.getFecha()
+                        + "| Total: " + item.getTotal() + "| Estado: " + item.getEstado() + "| ID Bodega: " + item.getIdBodega());
             }
             System.out.println("Datos guardados en datos.txt.");
         } catch (IOException e) {
@@ -466,19 +468,19 @@ public class main {
         try (Scanner lector = new Scanner(archivo)) {
             while (lector.hasNextLine()) {
                 String[] dato = lector.nextLine().split("\\|");
-                if (dato[0].equals("P")) {
+                if (dato[0].equals("PRODUCTOS")) {
                     productos.add(new producto(dato[1], dato[2], dato[3], dato[4],
                             Double.parseDouble(dato[5])));
-                } else if (dato[0].equals("C")) {
+                } else if (dato[0].equals("CLIENTES")) {
                     clientes.add(new cliente(dato[1], dato[2], dato[3], dato[4], dato[5]));
-                } else if (dato[0].equals("E")) {
+                } else if (dato[0].equals("EMPLEADOS")) {
                     empleados.add(new Empleado(dato[1], dato[2], dato[3], dato[4],
                             dato[5], Double.parseDouble(dato[6])));
-                } else if (dato[0].equals("B")) {
+                } else if (dato[0].equals("BODEGAS")) {
                     bodegas.add(new Bodega(dato[1], dato[2], Integer.parseInt(dato[3]), dato[4]));
-                } else if (dato[0].equals("I")) {
+                } else if (dato[0].equals("INVENTARIO")) {
                     inventarios.add(new Inventario(dato[1], dato[2], Integer.parseInt(dato[3])));
-                } else if (dato[0].equals("O")) {
+                } else if (dato[0].equals("ORDENES  ")) {
                     ordenes.add(new OrdenCompra(dato[1], dato[2], dato[3],
                             Integer.parseInt(dato[4]), dato[5], Double.parseDouble(dato[6]),
                             dato[7], dato[8]));
