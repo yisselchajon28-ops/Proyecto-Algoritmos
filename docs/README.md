@@ -176,37 +176,3 @@ guardar, se reescribe con todos los registros actuales.
 Los comentarios dentro de los archivos `.java` explican también los métodos de
 las clases y los pasos importantes de cada operación.
 
-## 12. Prompt para pedirle una explicación a otra IA
-
-Copia este texto y pégalo en otra inteligencia artificial. Si puedes, adjunta
-los archivos `.java` del proyecto:
-
-```text
-Estoy aprendiendo Java y necesito que me expliques este proyecto como a una
-persona principiante, sin asumir que conozco conceptos avanzados.
-
-Es un sistema sencillo de ventas e inventario con ventanas Java Swing. Tiene
-las clases main, producto, cliente, Empleado, Bodega, Inventario y
-OrdenCompra. Los datos se guardan en el archivo de texto datos.txt.
-
-Explícame el código usando los nombres reales de las clases, variables y
-métodos. Empieza por cómo se inicia el programa y luego explica:
-1. Qué hace cada clase y qué atributos tiene.
-2. Qué son los constructores, getters y setters que aparecen aquí.
-3. Cómo se crean las pestañas, formularios, botones y tablas.
-4. Qué ocurre paso a paso cuando registro un producto o un cliente.
-5. Cómo se agregan unidades al inventario y se limita la capacidad de una
-   bodega.
-6. Cómo una venta revisa el stock, calcula el total, guarda una orden y
-   descuenta las unidades.
-7. Cómo se cancela una orden y se devuelven las unidades.
-8. Cómo se leen y escriben los datos en datos.txt.
-9. Qué significan ArrayList, for, if, try/catch, lambda y las partes de Swing
-   que realmente usa este proyecto.
-
-Usa ejemplos pequeños y señala métodos o fragmentos concretos. Explica las
-palabras nuevas cuando aparezcan. No reescribas el proyecto ni propongas una
-arquitectura avanzada: quiero entender el código actual. Al final, hazme cinco
-preguntas cortas para comprobar si entendí y espera mis respuestas antes de
-darme las soluciones.
-```
