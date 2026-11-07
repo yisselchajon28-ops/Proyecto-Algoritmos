@@ -1,0 +1,61 @@
+@startuml
+
+class Producto {
+  - String codigo
+  - String nombre
+  - String descripcion
+  - String marca
+  - double precio
+}
+
+class Cliente {
+  - String dpi
+  - String nombre
+  - String direccion
+  - String fechaNacimiento
+  - String tipo
+}
+
+class Empleado {
+  - String id
+  - String nombre
+  - String dpi
+  - String direccion
+  - String puesto
+  - double salario
+}
+
+class Bodega {
+  - String id
+  - String idEmpleado
+  - int capacidad
+  - String direccion
+}
+
+class Inventario {
+  - String idBodega
+  - String codigoProducto
+  - int cantidad
+  + setCantidad(int cantidad)
+}
+
+class OrdenCompra {
+  - String id
+  - String dpiCliente
+  - String codigoProducto
+  - int cantidad
+  - String fecha
+  - double total
+  - String estado
+  - String idBodega
+  + setEstado(String estado)
+}
+
+Bodega --> Empleado
+Inventario --> Bodega
+Inventario --> Producto
+OrdenCompra --> Cliente
+OrdenCompra --> Producto
+OrdenCompra --> Bodega
+
+@enduml

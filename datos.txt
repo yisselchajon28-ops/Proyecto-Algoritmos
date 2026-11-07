@@ -1,0 +1,6 @@
+P|0001|Lactomi Leche|Es leche|Lactomi|10.0
+C|1234567498|Juanito|En su casa|21/11/2008|VIP
+E|0001|Pepito|789456123|En la casa de el|Cajero|3500.0
+B|001|0001|1000|Allá en Villanueva
+I|001|0001|241
+O|ORD-1|1234567498|0001|10|2026-11-04|100.0|Compleatda|001
